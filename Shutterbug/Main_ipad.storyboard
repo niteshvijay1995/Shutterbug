@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Rok-IR-b00">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Split View Controller-->
+        <scene sceneID="K9C-XN-Oeu">
+            <objects>
+                <splitViewController id="Rok-IR-b00" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="YFs-Dg-8fY" kind="relationship" relationship="masterViewController" id="rHx-C1-xRK"/>
+                        <segue destination="mlo-O9-SX4" kind="relationship" relationship="detailViewController" id="poO-R7-tzY"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fd3-V9-xez" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1478" y="-47"/>
+        </scene>
+        <!--Shuttebug-->
+        <scene sceneID="MPT-cZ-Dul">
+            <objects>
+                <tableViewController id="6Tc-AE-QoF" customClass="justPostedFlickrPhotosTVC" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="H8W-Yq-ZoT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Flickr Photo Cell" id="P1h-iD-szw">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P1h-iD-szw" id="pL5-mS-Dd7">
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="6Tc-AE-QoF" id="CcV-o5-zEU"/>
+                            <outlet property="delegate" destination="6Tc-AE-QoF" id="9Oe-kf-JEf"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Shuttebug" id="Ifg-Ct-jhJ"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="aUC-uP-RJE">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="fetchPhotos" destination="6Tc-AE-QoF" eventType="valueChanged" id="88D-XY-bgp"/>
+                        </connections>
+                    </refreshControl>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xp7-Pf-itb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="578" y="-47"/>
+        </scene>
+        <!--Image View Controller-->
+        <scene sceneID="HFF-db-lsf">
+            <objects>
+                <viewController id="iaX-Y0-Bee" customClass="ImageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8He-Gw-4xv"/>
+                        <viewControllerLayoutGuide type="bottom" id="S6W-1O-Rhb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LKY-B3-2Ei">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ydx-w7-9OT">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EmE-N3-FOf">
+                                <rect key="frame" x="0.0" y="-32" width="375" height="699"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="EmE-N3-FOf" secondAttribute="trailing" id="20I-8U-15d"/>
+                            <constraint firstItem="EmE-N3-FOf" firstAttribute="leading" secondItem="LKY-B3-2Ei" secondAttribute="leading" id="4dh-aR-Kuu"/>
+                            <constraint firstItem="EmE-N3-FOf" firstAttribute="bottom" secondItem="S6W-1O-Rhb" secondAttribute="top" id="AxO-r1-hNZ"/>
+                            <constraint firstItem="EmE-N3-FOf" firstAttribute="centerX" secondItem="ydx-w7-9OT" secondAttribute="centerX" id="Gbl-G9-kB6"/>
+                            <constraint firstItem="EmE-N3-FOf" firstAttribute="top" secondItem="LKY-B3-2Ei" secondAttribute="topMargin" constant="-32" id="eij-An-ROx"/>
+                            <constraint firstItem="ydx-w7-9OT" firstAttribute="centerY" secondItem="LKY-B3-2Ei" secondAttribute="centerY" id="gtm-4w-wNg"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="2z4-y6-9De"/>
+                    <connections>
+                        <outlet property="scrollView" destination="EmE-N3-FOf" id="dVX-PI-XeZ"/>
+                        <outlet property="spinner" destination="ydx-w7-9OT" id="OGQ-V0-GeE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U4n-yi-73K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1071.2" y="940.47976011994012"/>
+        </scene>
+        <!--ShutterBug-->
+        <scene sceneID="DyC-3c-0zk">
+            <objects>
+                <navigationController title="ShutterBug" automaticallyAdjustsScrollViewInsets="NO" id="YFs-Dg-8fY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RuR-BC-z6v">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="6Tc-AE-QoF" kind="relationship" relationship="rootViewController" id="kds-iv-kJn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U7L-PU-3nS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-314" y="-47"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bac-33-D8L">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mlo-O9-SX4" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2TM-hB-NpB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="iaX-Y0-Bee" kind="relationship" relationship="rootViewController" id="6Cz-LE-03w"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cdv-ek-y63" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="940.47976011994012"/>
+        </scene>
+    </scenes>
+</document>
